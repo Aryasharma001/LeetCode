@@ -5,24 +5,24 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong></span>
+<pre><span style="font-size:18px"><strong>Input:</strong></span>
 <span style="font-size:18px"><strong>N = </strong>10</span>
 <span style="font-size:18px"><strong>Output:</strong></span>
 <span style="font-size:18px">4</span>
 <span style="font-size:18px"><strong>Explanation:</strong></span>
 <span style="font-size:18px">The max height of the stairs with
-10 blocks is 4.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+10 blocks is 4.</span></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input:</strong></span>
+<pre><span style="font-size:18px"><strong>Input:</strong></span>
 <span style="font-size:18px"><strong>N = </strong>16</span>
 <span style="font-size:18px"><strong>Output:</strong></span>
 <span style="font-size:18px">5</span>
 <span style="font-size:18px"><strong>Explanation:</strong></span>
 <span style="font-size:18px">The max height of the stairs with
 16 blocks is 5.</span>
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 You don't need to read input or print anything. Your task is to complete the function <strong>maxStairHeight()</strong> which takes an Integer N as input and returns the answer.</span></p>
