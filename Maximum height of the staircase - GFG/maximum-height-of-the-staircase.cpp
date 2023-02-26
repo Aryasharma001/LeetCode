@@ -11,12 +11,10 @@ class Solution {
         int i=0;
         int count=0;
         while(ans<=N){
-            ans=(i*(i+1))/2;
-            count=max(count,i);
             i++;
-            
+            ans=(i*(i+1))/2;
         }
-        return count-1;
+        return i-1;
     }
 };
 
