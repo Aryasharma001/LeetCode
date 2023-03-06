@@ -43,12 +43,12 @@ int main()
 	{
 		int n,X;
 		cin>>n>>X;
-		int i,A[n];
-		for(i=0;i<n;i++)
+		int j,A[n];
+		for(j=0;j<n;j++)
 			cin>>A[i];
 		Solution ob;
         cout <<  ob.find3Numbers(A, n, X) << endl;
     }
 }
 
-// } Driver Code Ends
+// } Driver Code End
