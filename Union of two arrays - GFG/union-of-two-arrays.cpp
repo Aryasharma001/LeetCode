@@ -29,10 +29,10 @@ class Solution{
 
 int main() {
 	
-	int T;
-	cin >> T;
+	int t;
+	cin >> t;
 	
-	while(T--){
+	while(t--){
 	    
 	    int n, m;
 	    cin >> n >> m;
