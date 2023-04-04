@@ -13,7 +13,7 @@ public:
                         vector<int> triplet={nums[i],nums[start],nums[end]};
                         ans.push_back(triplet);
                         while(nums[start]==nums[start+1] &&start<(end-1)) start++;
-                        while(nums[end]==nums[end-1] &&start<(end-1)) end--;
+                        while(nums[end]==nums[end-1] &&start<(end)) end--;
                         start++;end--;
                     }
                     else if(sum>0){
