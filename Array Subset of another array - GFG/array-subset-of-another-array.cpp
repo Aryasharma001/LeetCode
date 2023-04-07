@@ -29,8 +29,8 @@ int main() {
 
 
 string isSubset(int a1[], int a2[], int n, int m) {
-    int* hsh = new int[1000001]();
-    int* hsh2 = new int[1000001]();
+    vector<int> hsh(1000001, 0);
+    vector<int> hsh2(1000001, 0);
     for(int i=0;i<n;i++){
         hsh[a1[i]]++;
     }
@@ -40,12 +40,8 @@ string isSubset(int a1[], int a2[], int n, int m) {
     for(int i=0;i<1000001;i++){
         if(hsh2[i]>0 && hsh2[i]>hsh[i])
         {
-            delete[] hsh;
-            delete[] hsh2;
             return "No";
         }
     }
-    delete[] hsh;
-    delete[] hsh2;
     return "Yes";
 }
