@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        int count;
         vector<int>v;
         int n=nums.size();
         for(int i=0;i<n;i++){
