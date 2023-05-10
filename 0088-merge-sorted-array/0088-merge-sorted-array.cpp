@@ -5,8 +5,8 @@ public:
         for(int i=0;i<m;i++){
                ans.push_back(nums1[i]); 
             }
-        for(int i=0;i<n;i++){
-            ans.push_back(nums2[i]);
+        for(int J=0;J<n;J++){
+            ans.push_back(nums2[J]);
         }
         sort(ans.begin(),ans.end());
         for(int i=0;i<n+m;i++){
