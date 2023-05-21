@@ -9,17 +9,17 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* pointerA=headA;
-        ListNode* pointerB=headB;
-        while(pointerA!=NULL){
-            while(pointerB!=NULL){
-                if(pointerA==pointerB)
-                    return pointerA;
-                pointerB=pointerB->next;
-            }
-            pointerB=headB;
-            pointerA=pointerA->next;
-        }
-        return NULL;
-    }
+        unordered_map<ListNode*, int> m;
+		while(headA != NULL){
+			m[headA]++;
+			headA = headA -> next;
+		}
+		while(headB != NULL){
+			if(m[headB] > 0){
+				return headB;
+			}
+			headB = headB -> next;
+		}
+		return NULL;
+	}
 };
