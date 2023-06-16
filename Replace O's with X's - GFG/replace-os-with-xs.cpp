@@ -6,39 +6,69 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-
-
-class Solution{
-   
-public:
-void dfs(int i,int j, vector<vector<char>> &mat,int n,int m){
-        if(i<0 || i>=n || j<0 || j>=m || mat[i][j]!='O')return ;
-        mat[i][j]='1';
-        dfs(i,j-1,mat,n,m);
-        dfs(i,j+1,mat,n,m);
-        dfs(i-1,j,mat,n,m);
-        dfs(i+1,j,mat,n,m);
-}
-    vector<vector<char>> fill(int n, int m, vector<vector<char>> mat)
-    {
-        for(int i=0;i<n;i++){
-            if(mat[i][0]=='O')dfs(i,0,mat,n,m);
-            if(mat[i][m-1]=='O')dfs(i,m-1,mat,n,m);
-        }
-        for(int i=0;i<m;i++){
-            if(mat[0][i]=='O')dfs(0,i,mat,n,m);
-            if(mat[n-1][i]=='O')dfs(n-1,i,mat,n,m);
-        }
-        for(auto &v:mat){
-            for(char &i:v)if(i=='O')i='X';
-        }
-        for(auto &v:mat){
-            for(char &i:v)if(i=='1')i='O';
-        }
-        return mat;
+ class Solution {
+     private:
+    void dfs(int row,int col,vector<vector<int>>&vis,vector<vector<char>>&mat, int delrow[],int delcol[]){
+            vis[row][col]=1;
+            int n=mat.size();
+            int m=mat[0].size();
+            
+            // check for top,right, buttom,left
+            for(int i=0;i<4;i++){
+                int nrow=row+delrow[i];
+                int ncol=col+delcol[i];
+                if(nrow>=0 && nrow<n && ncol>=0 && ncol<m
+                && !vis[nrow][ncol] && mat[nrow][ncol]=='O'){
+                    dfs(nrow,ncol,vis,mat,delrow,delcol);
+                }
+            }
     }
-     
+public:
+ 
+  vector<vector<char>> fill(int n, int m, vector<vector<char>> mat) {
+    // Initialize the visited array.
+    int delrow[]={-1,0,+1,0};
+    int delcol[]={0,1,0,-1};
+    vector<vector<int>> vis(n, vector<int>(m, 0));
     
+
+    // Iterate over the rows and columns of the matrix.
+    for (int j = 0; j < m; j++) {
+      // first row
+      if (!vis[0][j] && mat[0][j] == 'O') {
+        dfs(0, j, vis, mat, delrow,delcol);
+
+      }
+
+      // last row
+      if (!vis[n - 1][j] && mat[n - 1][j] == 'O') {
+        dfs(n - 1, j, vis, mat, delrow,delcol);
+      }
+    }
+    for (int i = 0; i < n; i++) {
+      if (!vis[i][0] && mat[i][0] == 'O') {
+        dfs(i, 0, vis, mat,delrow,delcol);
+
+      }
+
+      if (!vis[i][m - 1] && mat[i][m - 1] == 'O') {
+        dfs(i, m - 1, vis, mat, delrow,delcol);
+      }
+    }
+
+    // Iterate over the rows and columns of the matrix again.
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < m; j++) {
+
+        if (!vis[i][j] && mat[i][j] == 'O') {
+           mat[i][j] = 'X';
+        }
+      }
+    }
+
+    return mat;
+
+  }
 };
 
 //{ Driver Code Starts.
