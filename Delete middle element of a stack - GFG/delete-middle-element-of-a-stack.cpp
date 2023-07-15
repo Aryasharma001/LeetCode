@@ -15,18 +15,20 @@ class Solution
     {
         // code here..
         
-       stack<int> temp;
+        stack<int>s1;
         int n=sizeOfStack;
-        for(int i=0; i<n/2; i++){
+        for(int i=0;i<n/2;i++){
             int val=s.top();
             s.pop();
-            temp.push(val);
+            s1.push(val);
+            
         }
         s.pop();
-        for(int i=0; i<n/2; i++){
-            int val=temp.top();
-            temp.pop();
+        for(int i=0;i<n/2;i++){
+            int val=s1.top();
+            s1.pop();
             s.push(val);
+            
         }
     }
 };
