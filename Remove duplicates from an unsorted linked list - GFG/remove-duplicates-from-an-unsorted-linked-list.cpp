@@ -44,37 +44,23 @@ class Solution
     Node * removeDuplicates( Node *head) 
     {
      // your code goes here
-     unordered_map<int, int> mp;
-            
-            Node *prev, *curr, *temp;
-            prev = head;
-            curr = head -> next;
-            
-            mp[prev -> data]++;
-            
-            while (curr)
-            {
-                mp[curr -> data]++;
-                
-                if (mp[curr -> data] > 1)
-                {
-                    temp = curr;
-                    prev -> next = curr -> next;
-                    curr = curr -> next;
-                    free(temp);
-                    temp = NULL;
-                }
-                else
-                {
-                    curr = curr -> next;
-                    prev = prev -> next;
-                }
-            }
-            
-            prev = NULL;
-            
-            return head;
-        }
+     unordered_map<int,int>hash;
+     struct Node*p=head;
+     struct Node*q;
+     while(p!=NULL){
+         hash[p->data]++;
+         if(hash[p->data]>1){
+             q->next=p->next;
+             p=p->next;
+         }
+         else{
+             q=p;
+             p=p->next;
+         }
+     }
+     return head;
+     
+    }
 };
 
 
