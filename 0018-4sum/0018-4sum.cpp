@@ -1,36 +1,47 @@
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
-        int n=nums.size();
-        set<vector<int>> st;
-        vector<vector<int>> ans;
+        vector<int>:: iterator i;
+        vector<int>:: iterator j;
+        vector<int>:: iterator start;
+        vector<int>:: iterator end;
+
+        set<vector<int>> ans;
         sort(nums.begin(),nums.end());
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                int k=j+1;
-                int l=n-1;
-                while(k<l){
-                    long long int target2=target-nums[i];
-                    target2=target2-nums[j];
-                    if(nums[k]+nums[l]==target2){
-                        vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
-                        st.insert(temp);
-                        l--;
-                        k++;
-                    }
-                    else if((nums[k]+nums[l])<target2){
-                        k++;
-                    }
-                    else
-                        l--;
+        for( i = nums.begin() ; i!=nums.end() ; i++ ){
+            for(j = i+1 ; j !=nums.end() ; j++ )
+            {
+                start = j+1;
+                end = nums.end() -1; 
                 
+                long long target2 = target - *i;
+                target2 = target2 - *j ;
+
+                while(end>start)
+                {
+                    if(*start +*end== target2)
+                    {
+                        vector<int> v = {*i,*j,*start,*end};
+                        ans.insert(v);
+                        start++; end--;
+
+                    }
+                    else if(*start +*end > target2)
+                    {
+                        end --;
+                    }
+                    else 
+                    {
+                        start ++;
+                    }
                 }
-        
+
+                 
+
             }
         }
-        for(auto it:st){
-            ans.push_back(it);
-        }
-        return ans;
+        vector<vector<int>> vans (ans.begin() , ans.end());
+        return vans;
+
     }
 };
