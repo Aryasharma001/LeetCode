@@ -1,18 +1,18 @@
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
-        int n=nums.size();
-        map<int,int>mp;
-        for(int i=0;i<n;i++){
-            mp[nums[i]]++;
-        }
-        map<int,int>m;
-        for(auto it:mp){
-            m.insert({it.second,it.first});
-        }
-        for(auto it:m){
-            return it.second;
-        }
-        return -1;
+       int start=0,end=nums.size()-1;
+       while(start<end){
+           int mid=start+(end-start)/2;
+           if(mid%2!=0)
+               mid=mid-1;
+           if(nums[mid]==nums[mid+1])
+               start=mid+2;
+           else
+               end=mid;
+       }
+        return nums[start];
+        
+        //return -1;
     }
 };
