@@ -17,11 +17,8 @@ public:
             count++;
             testnode=testnode->next;                                                  
         }
-        int middle;
-        if(count%2==0)
-            middle=count/2;
-        else
-            middle=count/2;
+        int middle=count/2;
+       
         int i=0;
         while(i<=middle-1){
             head=head->next;
