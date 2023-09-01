@@ -18,10 +18,8 @@ public:
         }
         vector<int>original_array=arr;
         reverse(arr.begin(),arr.end());
-        for(int i=0;i<arr.size();i++){
-            if(arr[i]!=original_array[i])
-                return false;
-        }
+        if(arr!=original_array)
+            return false;
         return true;
     }
 };
