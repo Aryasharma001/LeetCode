@@ -15,27 +15,21 @@ public:
             return head;
         }
 
-        vector<int> arr;
-        ListNode* current = head;
-        while (current != NULL) {
-            arr.push_back(current->val);
-            current = current->next;
+       
+        ListNode* curr = head;
+        int len=1;
+        while(curr->next!=NULL){
+            len++;
+            curr=curr->next;
         }
-
-        int n = arr.size();
-        k = k % n; // Handle cases where k is larger than the length of the list
-
-        vector<int> arr2(n);
-        for (int i = 0; i < n; i++) {
-            arr2[(i + k) % n] = arr[i];
+        curr->next=head;
+        k=k%len;
+        k=len-k;
+        while(k--){
+            curr=curr->next;
         }
-
-        current = head;
-        for (int i = 0; i < n; i++) {
-            current->val = arr2[i];
-            current = current->next;
-        }
-
+        head=curr->next;
+        curr->next=NULL;
         return head;
     }
 };
