@@ -7,29 +7,46 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
-class Solution{
+
+
+class Solution {
 public:
-    bool isPossible(int Sum, int arr[], int idx)
-    {
-        if(Sum <= 0 || idx < 0) 
-        {
-            return Sum == 0;
-        }
-        return isPossible(Sum-arr[idx], arr, idx-1) || isPossible(Sum, arr, idx-1);
+    bool f(int i, int sum, int N, int arr[], vector<vector<int>>& dp) {
+        if (sum == 0)
+            return true;
+        if (sum < 0 || i == N)
+            return false;
+        if (dp[i][sum] != -1)
+            return dp[i][sum];
+
+        // Explore both cases: include the current element or exclude it
+        bool include = f(i + 1, sum - arr[i], N, arr, dp);
+        bool exclude = f(i + 1, sum, N, arr, dp);
+
+        return dp[i][sum] = include || exclude;
     }
-    int equalPartition(int N, int arr[])
-    {
-        // code here
-        int TotalSum = 0;
-        for(int i = 0; i < N; i++)
-        {
-            TotalSum += arr[i];
+
+    int equalPartition(int N, int arr[]) {
+        int totalSum = 0;
+        for (int i = 0; i < N; i++) {
+            totalSum += arr[i];
         }
-        
-        if(TotalSum%2)return false;
-        return isPossible(TotalSum/2, arr, N-1);
+
+        // If the total sum is odd, it can't be divided into equal partitions
+        if (totalSum % 2 != 0) {
+            return 0;
+        }
+
+        // Initialize the dp array with -1 values
+        vector<vector<int>> dp(N, vector<int>(totalSum / 2 + 1, -1));
+
+        // Check if there's a subset with a sum equal to totalSum/2
+        return f(0, totalSum / 2, N, arr, dp) ? 1 : 0;
     }
 };
+
+
+
 
 //{ Driver Code Starts.
 
