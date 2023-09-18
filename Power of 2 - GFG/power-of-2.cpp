@@ -10,17 +10,23 @@ using namespace std;
 
 class Solution{
     public:
+    int set_bit(long long n){
+        int count=0;
+        while(n!=0){
+            if(n%2!=0)
+            count++;
+            n=n/2;
+        }
+        return count;
+    }
     // Function to check if given number n is a power of two.
     bool isPowerofTwo(long long n){
         
-        // Your code here 
-        if(n==0)
+        // Your code here    
+        if(set_bit(n)!=1)
         return false;
-        if((n & (n-1)) == 0)
-        return true;
         else
-        return false;
-        
+        return true;
     }
 };
 
