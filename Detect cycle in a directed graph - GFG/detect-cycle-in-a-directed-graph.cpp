@@ -4,35 +4,33 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    private:
-    bool dfscheck(int i,vector<int> adj[],int vis[],int pathvis[]){
-        vis[i]=1;
-        pathvis[i]=1;
-        
-        //traverse for adjacent nodes
-        for(auto it:adj[i]){
-            // when the node is not visited
-            if(!vis[it]){
-                if(dfscheck(it,adj,vis,pathvis)==true) return true;
-            }
-            //if the node has been previously visited, but it has to be visited to be on same path
-            else if(pathvis[it])
-            return true;
-        }
-        pathvis[i]=0;
-        return false;
-    }
   public:
     // Function to detect cycle in a directed graph.
     bool isCyclic(int V, vector<int> adj[]) {
         // code here
-        int vis[V]={0};
-        int pathvis[V]={0};
-        for(int i=1;i<V;i++){
-            if(!vis[i]){
-                if(dfscheck(i,adj,vis,pathvis)==true) return true;
+        int cnt=0;
+        vector<int>indegree(V,0);
+        queue<int>q;
+        for(int i=0;i<V;i++){
+            for(auto it:adj[i]){
+                indegree[it]++;
             }
         }
+        for(int i=0;i<V;i++){
+            if(indegree[i]==0) q.push(i);
+        }
+        while(!q.empty()){
+            int node=q.front();
+            q.pop();
+            cnt++;
+            for(auto it:adj[node]){
+                indegree[it]--;
+                if(indegree[it]==0) q.push(it);
+            }
+        }
+        if(cnt!=V)
+        return true;
+        else
         return false;
     }
 };
