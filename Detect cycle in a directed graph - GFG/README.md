@@ -14,6 +14,6 @@
 
 <span style="font-size: 18px;"><strong>Output:</strong> 0
 <strong>Explanation</strong>: no cycle in the graph</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
-<p><br><span style="font-size: 18px;"><strong>Your task:</strong></span><br><span style="font-size: 18px;">You dont need to read input or print anything. Your task is to complete the function&nbsp;<strong>isCyclic()</strong>&nbsp;which takes the integer V denoting the number of vertices and adjacency list as input parameters and returns a boolean value denoting if the given directed graph contains a cycle or not. </span></p>
+<p><br><span style="font-size: 18px;"><strong>Your task:</strong></span><br><span style="font-size: 18px;">You dont need to read input or print anything. Your task is to complete the function&nbsp;<strong>isCyclic()</strong> which takes the integer V denoting the number of vertices and adjacency list <strong>adj</strong> as input parameters and returns a boolean value denoting if the given directed graph contains a cycle or not.<br>In the adjacency list <strong>adj,</strong> element&nbsp;<strong>adj[i][j]</strong> represents an edge from&nbsp;<strong>i </strong>to<strong> j.</strong></span></p>
 <p><br><span style="font-size: 18px;"><strong>Expected Time Complexity:&nbsp;</strong>O(V + E)<br><strong>Expected Auxiliary Space:&nbsp;</strong>O(V)</span></p>
 <p><br><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ V, E ≤ 10<sup>5</sup></span></p></div>
