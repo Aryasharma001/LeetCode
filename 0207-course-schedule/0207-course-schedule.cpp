@@ -1,37 +1,40 @@
 class Solution {
 public:
-    bool detectCycle(int src ,vector<int>&vis,vector<int>&crvisit,vector<int> adj[]){
-        vis[src]=1;
-        crvisit[src]=1;
-        for(auto it  : adj[src]){
-            if(!vis[it]){
-                if(detectCycle(it , vis , crvisit , adj)) return true ;
-            }
-            else if(vis[it]  && crvisit[it]){
-                return true ;
-            }
-        }
-        crvisit[src]=0;
-        return false ;
+    
+   bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+    queue<int> q;
+    int cnt = 0;
+    int V = numCourses; // Use numCourses as the number of vertices
+    vector<int> indegree(V, 0);
+    vector<vector<int>> adj(V);
+
+    for (int i = 0; i < prerequisites.size(); i++) {
+        int u = prerequisites[i][0];
+        int v = prerequisites[i][1];
+        adj[v].push_back(u); // Reversed the direction of the edge
+        indegree[u]++;
     }
-    bool canFinish(int numCourses, vector<vector<int>>& pq) {
-        int n = numCourses;   
-        vector<int> adj[n];
-        for(auto x : pq){
-            vector<int> data = x;
-            int a =data[0];
-            int b = data[1];
-            adj[a].push_back(b);
-            
+
+    for (int i = 0; i < V; i++) {
+        if (indegree[i] == 0) {
+            q.push(i);
         }
-        vector<int> vis(n,0);
-        vector<int> crvisit(n,0);
-        for(int i=0;i<n;i++){
-            if(!vis[i]){
-                if(detectCycle(i,vis,crvisit ,adj))
-                return false ;
+    }
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        cnt++;
+        for (auto it : adj[node]) {
+            indegree[it]--;
+            if (indegree[it] == 0) {
+                q.push(it);
             }
         }
-        return true ;
     }
+
+    // If cnt is not equal to V, there is a cycle, and you cannot finish the courses.
+    return cnt == V;
+}
+
 };
