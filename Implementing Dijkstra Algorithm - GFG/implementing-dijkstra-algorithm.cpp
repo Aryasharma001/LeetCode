@@ -12,14 +12,16 @@ class Solution
     {
         // Code here
         vector<int>dist(V,1e9);
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        set<pair<int,int>>pq;
         dist[S]=0;
-        pq.push({0,S});
+        pq.insert({0,S});
         
         while(!pq.empty()){
-            int dis=pq.top().first;
-            int node=pq.top().second;
-            pq.pop();
+            auto it=*(pq.begin());
+            int dis=it.first;
+            int node=it.second;
+            
+            pq.erase(it);
             
             for(auto it:adj[node]){
                 int edgeWeight=it[1];
@@ -27,7 +29,7 @@ class Solution
                 
                 if(dis+edgeWeight<dist[adjnode]){
                     dist[adjnode]=dis+edgeWeight;
-                    pq.push({dist[adjnode],adjnode});
+                    pq.insert({dist[adjnode],adjnode});
                 }
             }
         }
