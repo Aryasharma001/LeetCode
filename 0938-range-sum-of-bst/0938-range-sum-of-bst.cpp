@@ -17,7 +17,6 @@ public:
         }
 
         if (root->val >= low && root->val <= high) {
-            //cout<<root->val<<endl;
             return root->val + function(root->left, low, high) + function(root->right, low, high);
         } else {
             return function(root->left, low, high) + function(root->right, low, high);
