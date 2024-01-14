@@ -10,14 +10,6 @@ public:
         for(int i=0;i<word2.size();i++){
             hash2[int(word2[i]-'a')]++;
         }
-        // for(int i=0;i<28;i++){
-        //     cout<<hash1[i]<<" ";
-        // }
-        // cout<<endl;
-        // for(int i=0;i<28;i++){
-        //     cout<<hash2[i]<<" ";
-        // }
-        // cout<<endl;
         if(hash1==hash2){
             return true;
         }
