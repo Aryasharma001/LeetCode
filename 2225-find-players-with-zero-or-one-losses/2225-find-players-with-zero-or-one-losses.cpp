@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
-        vector<int>hash(1000001,0);
+        vector<int>hash(100001,0);
         set<int>winners;
         vector<int>losers;
         for(auto it:matches){
