@@ -1,33 +1,27 @@
-class Solution {
-public:
-    bool isPalindrome(string temp){
-        int n=temp.size();
-        for(int i=0;i<n/2;i++){
-            if(temp[i]!=temp[n-i-1]){
+public class Solution {
+    boolean isPalindrome(String temp) {
+        int n = temp.length();
+        for (int i = 0; i < n / 2; i++) {
+            if (temp.charAt(i) != temp.charAt(n - i - 1)) {
                 return false;
             }
         }
         return true;
     }
-    int countSubstrings(string s) {
-        string temp;
-        int count=0;
-        for(int i=0;i<s.size();i++){
-            
-            temp=s[i];
-            if(isPalindrome(temp)==true){
-                 count++;
-                // cout<<temp<<endl;
-            }
-            for(int j=i+1;j<s.size();j++){
-                temp+=s[j];
-                // cout<<temp<<" ";
-                if(isPalindrome(temp)==true){
+
+    public int countSubstrings(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            StringBuilder temp = new StringBuilder();
+            for (int j = i ; j <s.length(); j++) {
+                temp.append(s.charAt(j));
+                // System.out.println(temp + " ");
+                if (isPalindrome(temp.toString())) {
                     count++;
-                    // cout<<temp<<endl;
+                    // System.out.println(temp);
                 }
             }
         }
         return count;
     }
-};
+}
