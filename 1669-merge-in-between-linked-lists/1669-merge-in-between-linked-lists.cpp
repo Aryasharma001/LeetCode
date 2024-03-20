@@ -11,7 +11,6 @@
 class Solution {
 public:
     ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
-        ListNode* aend=NULL;
         ListNode* copy=list1;
         ListNode * head=copy;
         int count=0;
