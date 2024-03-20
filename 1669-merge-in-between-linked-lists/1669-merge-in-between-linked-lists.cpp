@@ -18,13 +18,12 @@ public:
         while(count<a){
             count++;
             copy=list1;
-            cout<<copy->val<<" ";
+            // cout<<copy->val<<" ";
             list1=list1->next;
         }
         copy->next=list2;
         while(list2!=NULL){
             copy=list2;
-            cout<<copy->val<<" ";
             list2=list2->next;
         }
         while(count<b+1){
