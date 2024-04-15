@@ -11,39 +11,28 @@
  */
 class Solution {
 public:
-    void func(TreeNode* node, vector<vector<int>>& nums, vector<int>& temp) {
-        if (node == NULL) {
-            return;
-        } 
-
-        temp.push_back(node->val);  // Include the current node's value in the path
-
-        // Check if the current node is a leaf node
-        if (node->left == NULL && node->right == NULL) {
-            nums.push_back(temp);  // If it's a leaf node, add the path to the result
-        } else {
-            // Recursively traverse the left and right subtrees
-            func(node->left, nums, temp);
-            func(node->right, nums, temp);
-        }
-
-        temp.pop_back();  // Remove the current node's value after traversing its subtree
-}
-
-    
-    int sumNumbers(TreeNode* root) {
-        vector<vector<int>>nums;
-        int ans=0;
-        vector<int>temp;
-        func(root,nums,temp);
-        for(auto it:nums){
-            for(int j=0;j<it.size();j++){
-                //cout<<it[j]<<" ";
-                ans+=it[j]*pow(10,(it.size()-j-1));
-             }
-            //cout<<endl;
-        }
-        return ans;
+    bool isLeaf(TreeNode* root)
+    {
+        if(root->left == nullptr && root->right == nullptr)
+            return true;
+        return false;
     }
-    
+    int sumNumbers(TreeNode* root, int cur)
+    {
+        if(root == nullptr)
+            return 0;
+
+        cur = cur*10 + root->val;
+        
+        if(isLeaf(root))
+            return cur;
+
+        return sumNumbers(root->left, cur) + sumNumbers(root->right, cur);
+
+    }
+    int sumNumbers(TreeNode* root) {
+        return  sumNumbers(root, 0);
+
+    }
+
 };
