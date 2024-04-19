@@ -3,7 +3,7 @@ public:
     string longestCommonPrefix(vector<string>& strs) {
         int n = strs.size();
         if (n == 0) {
-            return "";  // Handle the case of an empty input.
+            return "";  // case of an empty input.
         }
         if(n==1){
             return strs[0];
