@@ -13,26 +13,25 @@ public:
     ListNode* mergeNodes(ListNode* head) {
         if (head == NULL) return NULL;
 
-        ListNode* dummy = new ListNode(0);  // Create a dummy node to start the new list
-        ListNode* current = dummy;  // This will point to the last node in the new list
+        ListNode* dummy = new ListNode(0); 
+        ListNode* current = dummy; 
         int value = 0;
 
-        head = head->next;  // Skip the initial zero node
+        head = head->next;
 
         while (head != NULL) {
             if (head->val == 0) {
-                // If we encounter a zero and value is not zero, create a new node with the sum
                 if (value != 0) {
                     current->next = new ListNode(value);
                     current = current->next;
                 }
-                value = 0;  // Reset the value
+                value = 0;  
             } else {
-                value += head->val;  // Add the current node's value to the sum
+                value += head->val; 
             }
             head = head->next;
         }
 
-        return dummy->next;  // Return the next of dummy node as dummy is a placeholder
+        return dummy->next;
     }
 };
