@@ -6,7 +6,7 @@
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg" style="width: 500px; height: 188px;">
 <pre><strong>Input:</strong> matrix = [[1,2,3],[4,5,6],[7,8,9]]
-<strong>Output:</strong> [[7,4,1],[8,5,2],[9,6,3]]
+<strong>Output:</strong> [[7,4,1],[8,5,2],[9,6,3]].
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
