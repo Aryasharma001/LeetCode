@@ -11,12 +11,12 @@
  */
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* root) {
-        if(root==NULL) return root;
+    void invertTree(TreeNode* root) {
+        if(root==NULL) return;
         swap(root->left, root->right);
         invertTree(root->left);
         invertTree(root->right);
-        return root;
+        //return root;
     }
     bool isSameTree(TreeNode* p, TreeNode* q) {
         if(p==NULL && q==NULL) 
