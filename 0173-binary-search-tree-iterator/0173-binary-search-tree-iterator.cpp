@@ -11,27 +11,35 @@
  */
 class BSTIterator {
 public:
-    stack<TreeNode*>st;
-    void func(TreeNode* node){
-        if(node==NULL) return;
-        st.push(node);
-        func(node->left);
-        
+    stack<TreeNode*> st;
+    
+    // Traverse the leftmost part of the tree
+    void pushLeft(TreeNode* node) {
+        while (node != nullptr) {
+            st.push(node);
+            node = node->left;
+        }
     }
+    
+    // Constructor
     BSTIterator(TreeNode* root) {
-        func(root);
+        pushLeft(root);
     }
     
+    // Return the next smallest number
     int next() {
-        TreeNode* ans=st.top();
+        TreeNode* node = st.top();
         st.pop();
-        if(ans->right)
-            func(ans->right);
-        return ans->val;
-     }
+        // If the node has a right child, process its right subtree
+        if (node->right != nullptr) {
+            pushLeft(node->right);
+        }
+        return node->val;
+    }
     
+    // Return whether we have a next smallest number
     bool hasNext() {
-        return !st.empty();
+        return !st.empty();  // should return true if there are still nodes left
     }
 };
 
