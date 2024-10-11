@@ -6,7 +6,6 @@ public:
         priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> occupied_chairs;
         priority_queue<int,vector<int>,greater<int>>available_chairs;
         int chairs=0;
-        //available_chairs.push(0);
         for(int i=0;i<times.size();i++){
             int arrivalTime=times[i][0];
             int departureTime=times[i][1];
