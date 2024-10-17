@@ -13,8 +13,6 @@ public:
             num=num/10;
             i++;
         }
-        //cout<<endl;
-        //swap(digits[index_max],digits[index_min]);
         reverse(digits.begin(),digits.end());
         unsorted_digit=digits;
         sort(digits.begin(),digits.end(),greater<int>());
