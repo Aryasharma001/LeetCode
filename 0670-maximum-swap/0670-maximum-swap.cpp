@@ -7,7 +7,6 @@ public:
         int index_min=0;
         bool flag=0;
         int i=0;
-        int num_clone=num;
         while(num!=0){
             int a=num%10;
             digits.push_back(a);
@@ -36,9 +35,8 @@ public:
         int res=digits[0];
         for(int i=1;i<unsorted_digit.size();i++){
             res=res*10+unsorted_digit[i];
-            //cout<<res<<" ";
         }
-        return max(res,num_clone);
+        return res;
         
     }
 };
