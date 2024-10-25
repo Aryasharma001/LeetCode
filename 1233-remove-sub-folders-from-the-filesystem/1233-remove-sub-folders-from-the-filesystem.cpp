@@ -6,7 +6,7 @@ public:
         for(auto it:folder){
             hashSet.insert(it);
         }
-        for(auto currFolder:folder){
+        for(auto &currFolder:folder){
             bool isSubFolder=false;
             string temp=currFolder;
             while(!currFolder.empty()){
