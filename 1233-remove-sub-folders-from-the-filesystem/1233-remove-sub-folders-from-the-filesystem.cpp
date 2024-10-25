@@ -2,26 +2,14 @@ class Solution {
 public:
     vector<string> removeSubfolders(vector<string>& folder) {
         vector<string> ans;
-        set<string>hashSet;
-        for(auto it:folder){
-            hashSet.insert(it);
+        sort(folder.begin(), folder.end());
+        ans.push_back(folder[0]);
+        for (int i = 1; i < folder.size(); i++) {
+            string lastString=ans.back();
+            lastString+='/';
+            if(folder[i].find(lastString)!=0)
+                ans.push_back(folder[i]);
         }
-        for(auto &currFolder:folder){
-            bool isSubFolder=false;
-            string temp=currFolder;
-            while(!currFolder.empty()){
-                size_t end=currFolder.find_last_of('/');
-                currFolder=currFolder.substr(0,end);
-                if(hashSet.find(currFolder)!=hashSet.end()){
-                    isSubFolder=true;
-                    break;
-                }
-                    
-            }
-            if(isSubFolder==false)
-                ans.push_back(temp);
-            
-        }
-        return ans;
+        return ans; // Return the result vector
     }
 };
